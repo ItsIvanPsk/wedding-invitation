@@ -1,0 +1,15 @@
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Application\bin\Debug\net9.0\Wedding.Application.deps.json
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Application\bin\Debug\net9.0\Wedding.Application.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Application\bin\Debug\net9.0\Wedding.Application.pdb
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Application\bin\Debug\net9.0\Wedding.Domain.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Application\bin\Debug\net9.0\Wedding.Domain.pdb
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Application\obj\Debug\net9.0\Wedding.Application.csproj.AssemblyReference.cache
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Application\obj\Debug\net9.0\Wedding.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Application\obj\Debug\net9.0\Wedding.Application.AssemblyInfoInputs.cache
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Application\obj\Debug\net9.0\Wedding.Application.AssemblyInfo.cs
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Application\obj\Debug\net9.0\Wedding.Application.csproj.CoreCompileInputs.cache
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Application\obj\Debug\net9.0\Wedding..16C2A49E.Up2Date
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Application\obj\Debug\net9.0\Wedding.Application.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Application\obj\Debug\net9.0\refint\Wedding.Application.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Application\obj\Debug\net9.0\Wedding.Application.pdb
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Application\obj\Debug\net9.0\ref\Wedding.Application.dll

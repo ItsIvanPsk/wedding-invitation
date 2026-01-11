@@ -1,0 +1,17 @@
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\bin\Debug\net9.0\Wedding.Infrastructure.Repositories.deps.json
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\bin\Debug\net9.0\Wedding.Infrastructure.Repositories.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\bin\Debug\net9.0\Wedding.Infrastructure.Repositories.pdb
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\bin\Debug\net9.0\Wedding.Domain.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\bin\Debug\net9.0\Wedding.Infrastructure.Data.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\bin\Debug\net9.0\Wedding.Domain.pdb
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\bin\Debug\net9.0\Wedding.Infrastructure.Data.pdb
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\obj\Debug\net9.0\Wedding.Infrastructure.Repositories.csproj.AssemblyReference.cache
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\obj\Debug\net9.0\Wedding.Infrastructure.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\obj\Debug\net9.0\Wedding.Infrastructure.Repositories.AssemblyInfoInputs.cache
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\obj\Debug\net9.0\Wedding.Infrastructure.Repositories.AssemblyInfo.cs
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\obj\Debug\net9.0\Wedding.Infrastructure.Repositories.csproj.CoreCompileInputs.cache
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\obj\Debug\net9.0\Wedding..50352E4A.Up2Date
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\obj\Debug\net9.0\Wedding.Infrastructure.Repositories.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\obj\Debug\net9.0\refint\Wedding.Infrastructure.Repositories.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\obj\Debug\net9.0\Wedding.Infrastructure.Repositories.pdb
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Repositories\obj\Debug\net9.0\ref\Wedding.Infrastructure.Repositories.dll

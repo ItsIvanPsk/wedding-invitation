@@ -1,0 +1,18 @@
+meta {
+  name: Create Family
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:5000/api/families
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Familia",
+    "guestNames": ["Juan", "Aurora", "Mireia"]
+  }
+}

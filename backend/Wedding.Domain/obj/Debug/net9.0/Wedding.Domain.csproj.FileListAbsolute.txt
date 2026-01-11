@@ -1,0 +1,11 @@
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Domain\bin\Debug\net9.0\Wedding.Domain.deps.json
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Domain\bin\Debug\net9.0\Wedding.Domain.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Domain\bin\Debug\net9.0\Wedding.Domain.pdb
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Domain\obj\Debug\net9.0\Wedding.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Domain\obj\Debug\net9.0\Wedding.Domain.AssemblyInfoInputs.cache
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Domain\obj\Debug\net9.0\Wedding.Domain.AssemblyInfo.cs
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Domain\obj\Debug\net9.0\Wedding.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Domain\obj\Debug\net9.0\Wedding.Domain.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Domain\obj\Debug\net9.0\refint\Wedding.Domain.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Domain\obj\Debug\net9.0\Wedding.Domain.pdb
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Domain\obj\Debug\net9.0\ref\Wedding.Domain.dll

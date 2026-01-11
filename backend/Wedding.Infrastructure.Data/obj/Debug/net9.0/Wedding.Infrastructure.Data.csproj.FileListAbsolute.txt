@@ -1,0 +1,15 @@
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Data\bin\Debug\net9.0\Wedding.Infrastructure.Data.deps.json
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Data\bin\Debug\net9.0\Wedding.Infrastructure.Data.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Data\bin\Debug\net9.0\Wedding.Infrastructure.Data.pdb
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Data\bin\Debug\net9.0\Wedding.Domain.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Data\bin\Debug\net9.0\Wedding.Domain.pdb
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Data\obj\Debug\net9.0\Wedding.Infrastructure.Data.csproj.AssemblyReference.cache
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Data\obj\Debug\net9.0\Wedding.Infrastructure.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Data\obj\Debug\net9.0\Wedding.Infrastructure.Data.AssemblyInfoInputs.cache
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Data\obj\Debug\net9.0\Wedding.Infrastructure.Data.AssemblyInfo.cs
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Data\obj\Debug\net9.0\Wedding.Infrastructure.Data.csproj.CoreCompileInputs.cache
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Data\obj\Debug\net9.0\Wedding..4B8AB541.Up2Date
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Data\obj\Debug\net9.0\Wedding.Infrastructure.Data.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Data\obj\Debug\net9.0\refint\Wedding.Infrastructure.Data.dll
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Data\obj\Debug\net9.0\Wedding.Infrastructure.Data.pdb
+C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Infrastructure.Data\obj\Debug\net9.0\ref\Wedding.Infrastructure.Data.dll
