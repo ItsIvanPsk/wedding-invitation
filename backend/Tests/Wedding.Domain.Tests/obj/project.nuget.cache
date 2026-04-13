@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DAA6L/lwxp8=",
+  "dgSpecHash": "VxnZGVIW/gI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Tests\\Wedding.Domain.Tests\\Wedding.Domain.Tests.csproj",
+  "projectFilePath": "D:\\WeddingInvitation\\backend\\Tests\\Wedding.Domain.Tests\\Wedding.Domain.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ivanf\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
     "C:\\Users\\ivanf\\.nuget\\packages\\fluentassertions\\6.12.0\\fluentassertions.6.12.0.nupkg.sha512",
@@ -21,7 +21,10 @@
     "C:\\Users\\ivanf\\.nuget\\packages\\xunit.core\\2.9.2\\xunit.core.2.9.2.nupkg.sha512",
     "C:\\Users\\ivanf\\.nuget\\packages\\xunit.extensibility.core\\2.9.2\\xunit.extensibility.core.2.9.2.nupkg.sha512",
     "C:\\Users\\ivanf\\.nuget\\packages\\xunit.extensibility.execution\\2.9.2\\xunit.extensibility.execution.2.9.2.nupkg.sha512",
-    "C:\\Users\\ivanf\\.nuget\\packages\\xunit.runner.visualstudio\\2.8.2\\xunit.runner.visualstudio.2.8.2.nupkg.sha512"
+    "C:\\Users\\ivanf\\.nuget\\packages\\xunit.runner.visualstudio\\2.8.2\\xunit.runner.visualstudio.2.8.2.nupkg.sha512",
+    "C:\\Users\\ivanf\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.14\\microsoft.netcore.app.ref.9.0.14.nupkg.sha512",
+    "C:\\Users\\ivanf\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.14\\microsoft.windowsdesktop.app.ref.9.0.14.nupkg.sha512",
+    "C:\\Users\\ivanf\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.14\\microsoft.aspnetcore.app.ref.9.0.14.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,228 +1,266 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const emit = defineEmits(['opened', 'start-opening'])
+const emit = defineEmits(['opened'])
+
 const isOpen = ref(false)
-const isFinished = ref(false)
+const showWhite = ref(false)
 
 const openEnvelope = () => {
   if (isOpen.value) return
   isOpen.value = true
-  emit('start-opening')
-  
+
+  // Start white fade a bit earlier as the opening is now faster at start
   setTimeout(() => {
-    isFinished.value = true
-    setTimeout(() => {
-      emit('opened')
-    }, 1000)
-  }, 800)
+    showWhite.value = true
+  }, 1300)
+
+  // Emit after fade completes
+  setTimeout(() => {
+    console.log("📨 EnvelopeOverlay: Emitting 'opened' event");
+    emit('opened')
+  }, 3600)
+  
+  // Safety fallback
+  setTimeout(() => {
+    emit('opened')
+  }, 5000)
 }
 </script>
 
 <template>
-  <div class="envelope-overlay" :class="{ 'is-finished': isFinished }">
-    <div class="envelope-container" :class="{ 'is-open': isOpen }" @click="openEnvelope">
-      <div class="envelope-body">
-        <div class="envelope-back"></div>
-        <div class="envelope-paper">
-           <div class="paper-content">
-             <h2>N & I</h2>
-           </div>
+  <div class="scene">
+    <!-- White fade to transition -->
+    <div class="white-fade" :class="{ active: showWhite }"></div>
+
+    <!-- The envelope is the full screen. 4 triangular flaps meet at center. -->
+
+    <!-- Static flaps (left, right, bottom) -->
+    <div class="flap flap-left"></div>
+    <div class="flap flap-right"></div>
+    <div class="flap flap-bottom"></div>
+
+    <!-- Top flap + seal move together as one unit -->
+    <div class="top-unit" :class="{ open: isOpen }">
+      <!-- Black interior lining -->
+      <div class="flap flap-top-inner"></div>
+      <div class="flap flap-top"></div>
+
+      <button
+        class="seal"
+        :class="{ open: isOpen }"
+        @click="openEnvelope"
+        aria-label="Abrir el sobre pulsando el sello"
+      >
+        <div class="seal-inner">
+          <span class="initials">N & I</span>
         </div>
-        <div class="envelope-front"></div>
-        <div class="envelope-flap">
-           <button class="wax-seal-btn" @click.stop="openEnvelope">
-             <img src="@/assets/wax-seal.png" alt="Abrir" />
-           </button>
-        </div>
-      </div>
+      </button>
     </div>
-    
-    <div class="click-hint" v-if="!isOpen">
-      <p>Pulsa el sello para abrir</p>
-    </div>
+
+    <!-- Hint -->
+    <p class="hint" v-if="!isOpen">Pulsa el sello para abrir</p>
   </div>
 </template>
 
 <style scoped>
-.envelope-overlay {
+/* ── Variables ──────────────────────────────────────── */
+:root {
+  --burg-base:    #6b1a2a;
+  --burg-dark:    #4e1220;
+  --burg-mid:     #7d2033;
+  --burg-light:   #9b2a41;
+  --burg-top:     #8c2239;
+}
+
+/* ── Scene (full screen = the envelope body back) ───── */
+.scene {
   position: fixed;
   inset: 0;
-  background-color: #f0f4f8;
   z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: transform 1s cubic-bezier(0.7, 0, 0.3, 1), opacity 0.5s ease;
+  background: #000; /* Black interior revealed when opening */
+  overflow: hidden;
+  /* perspective for 3-D flap opening */
+  perspective: 1800px;
+  perspective-origin: 50% 0%;
 }
 
-.envelope-overlay.is-finished {
-  transform: translateY(-100%);
+/* ── White fade overlay ────────────────────────────── */
+.white-fade {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+  transition: opacity 2s ease-in-out;
+}
+.white-fade.active { opacity: 1; }
+
+/* ── Shared flap base ────────────────────────────────  */
+/*  Every flap is a full-cover div clipped to a triangle */
+.flap {
+  position: absolute;
+  inset: 0;
   pointer-events: none;
 }
 
-.envelope-container {
-  position: relative;
-  width: min(90vw, 600px);
-  max-width: 600px;
-  aspect-ratio: 1.6;
-  cursor: pointer;
-  perspective: 1500px;
+/* LEFT  — triangle: top-left → bottom-left → center */
+.flap-left {
+  clip-path: polygon(0% 0%, 0% 100%, 50% 50%);
+  background: linear-gradient(135deg, #7d2033 0%, #5e1826 100%);
+  z-index: 2;
+  /* subtle inner shadow toward center */
+  box-shadow: inset -8px 0 24px rgba(0,0,0,0.25);
 }
 
-.envelope-body {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
+/* RIGHT — triangle: top-right → bottom-right → center */
+.flap-right {
+  clip-path: polygon(100% 0%, 100% 100%, 50% 50%);
+  background: linear-gradient(225deg, #7d2033 0%, #5e1826 100%);
+  z-index: 2;
 }
 
-/* Colors */
-:root {
-  --envelope-color: #1e3a8a; 
-  --envelope-dark: #172554;
-  --envelope-light: #2563eb;
+/* BOTTOM — triangle: bottom-left → bottom-right → center */
+.flap-bottom {
+  clip-path: polygon(0% 100%, 100% 100%, 50% 50%);
+  background: linear-gradient(0deg, #4e1220 0%, #6b1a2a 100%);
+  z-index: 3;
+  /* drop shadow upward to separate from back */
+  filter: drop-shadow(0 -4px 12px rgba(0,0,0,0.35));
 }
 
-/* Back of envelope (inside) */
-.envelope-back {
+/* ── Top unit (flap + seal animate together) ─────────── */
+.top-unit {
   position: absolute;
   inset: 0;
-  background-color: #1e3a5f; /* Deep Blue */
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-/* Paper/Card inside - subtly visible */
-.envelope-paper {
-  position: absolute;
-  inset: 10px;
-  top: 20px;
-  background-color: white;
-  height: 90%;
-  border-radius: 8px;
-  z-index: 1;
-  transition: transform 0.6s ease 0.6s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-}
-
-.paper-content h2 {
-  font-family: 'Great Vibes', cursive; /* Assuming font exists, or fallback */
-  font-size: 3rem;
-  color: #333;
-  opacity: 0.2;
-}
-
-.is-open .envelope-paper {
-  transform: translateY(-50px);
-  z-index: 4; /* Pop out above front */
-}
-
-/* Front Pocket */
-.envelope-front {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  border-bottom: 250px solid #2e4a7d; /* Slightly lighter blue */
-  border-left: 300px solid transparent;
-  border-right: 300px solid transparent;
-  width: 0;
-  z-index: 5;
-  filter: drop-shadow(0 -5px 10px rgba(0,0,0,0.1));
-  /* Responsive triangle requires simplified approach usually, but let's try CSS borders first, or absolute positioning with clip-path */
-}
-
-/* Better approach for responsive front pocket */
-.envelope-front {
-  position: absolute;
-  inset: 0;
-  border: 0;
-  background: transparent;
+  transform-origin: 50% 0%;           /* hinge at top edge */
+  /* Faster start, medium-slow smooth finish */
+  transition: transform 3.5s cubic-bezier(0.3, 0, 0.2, 1);
   z-index: 10;
-  pointer-events: none; /* Let click pass through to paper if needed */
-  /* Create the V shape pocket */
-  clip-path: polygon(0 100%, 100% 100%, 100% 40%, 50% 65%, 0 40%);
-  background-color: #2c3e50; /* Blue-Gray/Navy */
-  background: linear-gradient(135deg, #2c3e50, #34495e);
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
 }
 
-/* Flap */
-.envelope-flap {
+/* When open: only lift slightly before fading to white */
+.top-unit.open {
+  transform: rotateX(-25deg);
+}
+
+/* TOP — triangle: top-left → top-right → center */
+.flap-top {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 65%; /* Reaches the middle roughly */
-  background-color: #34495e; /* Matching envelope */
-  background: linear-gradient(135deg, #34495e, #2c3e50);
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  transform-origin: top;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s linear 0.4s;
-  z-index: 20; /* Above front initially */
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+  inset: 0;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 50%);
+  background: linear-gradient(180deg, #a0293f 0%, #7d2033 100%);
+  z-index: 2;
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.4));
 }
 
-.is-open .envelope-flap {
-  transform: rotateX(180deg);
-  z-index: 0; /* Fall behind everything */
-  pointer-events: none;
+/* Interior lining of top flap (black) */
+.flap-top-inner {
+  clip-path: polygon(0% 0%, 100% 0%, 50% 50%);
+  background: #000;
+  z-index: 1;
 }
 
-/* Wax Seal Button */
-.wax-seal-btn {
+/* ── Wax seal button ─────────────────────────────────── */
+/*   Sits exactly where all 4 triangles meet: 50% / 50%  */
+.seal {
   position: absolute;
-  bottom: 20px; /* Position near the tip of the triangle */
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateZ(1px); /* Ensure it sits on top */
-  width: 120px;
-  height: 120px;
+  transform: translate(-50%, -50%);
+
+  width: clamp(90px, 22vw, 130px);
+  height: clamp(90px, 22vw, 130px);
+
   background: none;
   border: none;
-  cursor: pointer;
   padding: 0;
-  z-index: 25;
-  transition: transform 0.3s ease;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+  cursor: pointer;
+  z-index: 20;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
 }
 
-.wax-seal-btn:hover {
-  transform: translateX(-50%) scale(1.1);
-}
-
-.wax-seal-btn img {
+.seal-inner {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  background: radial-gradient(circle at 35% 35%, #8b2034 0%, #5a1422 100%);
+  border-radius: 48% 52% 50% 50% / 51% 48% 52% 49%; /* Irregular organic shape */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 
+    inset 0 0 15px rgba(0,0,0,0.4),
+    0 10px 25px rgba(0,0,0,0.5);
+  border: 2px solid rgba(0,0,0,0.1);
 }
 
-.click-hint {
-  margin-top: 3rem;
-  color: #333;
-  font-size: 1.2rem;
-  opacity: 0.7;
-  animation: pulse 2s infinite;
+/* Raised edge effect */
+.seal-inner::after {
+  content: '';
+  position: absolute;
+  inset: 10%;
+  border-radius: inherit;
+  border: 4px solid rgba(0,0,0,0.15);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 0.3; }
+.initials {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  color: rgba(255, 215, 200, 0.85);
+  text-shadow: 0px 2px 3px rgba(0,0,0,0.5), 0 0 1px rgba(255,255,255,0.2);
+  user-select: none;
+  font-style: italic;
+  font-weight: 700;
+  z-index: 2;
+  letter-spacing: -2px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  .envelope-container {
-    width: 90vw;
-    /* Adjust clip paths for aspect ratio changes if necessary, but polygon % works well */
-  }
+/* Hover pulse when not yet opened */
+.seal:not(.open):hover {
+  transform: translate(-50%, -50%) scale(1.1) rotate(3deg);
+}
+
+/* Disable interaction once opened */
+.seal.open {
+  pointer-events: none;
+}
+
+/* ── Edge lines to reinforce envelope shape ─────────── */
+/* Thin inner stroke around each diagonal (pure CSS) */
+.scene::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* The diagonal fold lines: X pattern from corners to center */
+  background:
+    linear-gradient(to bottom right, transparent calc(50% - 1px), rgba(255,180,160,0.18) calc(50% - 1px), rgba(255,180,160,0.18) calc(50% + 1px), transparent calc(50% + 1px)),
+    linear-gradient(to bottom left,  transparent calc(50% - 1px), rgba(255,180,160,0.18) calc(50% - 1px), rgba(255,180,160,0.18) calc(50% + 1px), transparent calc(50% + 1px));
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* ── Hint text ────────────────────────────────────────── */
+.hint {
+  position: absolute;
+  bottom: 7%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 215, 200, 0.8);
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(0.85rem, 3.5vw, 1.2rem);
+  letter-spacing: 2px;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 15;
+  animation: breathe 2.5s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.8; }
+  50%       { opacity: 0.3; }
 }
 </style>

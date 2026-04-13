@@ -7,6 +7,7 @@ export interface Guest {
   isAttending: boolean
   isChildMenu: boolean
   isAdultMenu: boolean
+  isGlutenFree: boolean
   isHalfPortion: boolean
   intolerances?: string | null
   selectedIntolerances: number[]
@@ -54,6 +55,7 @@ export const useFamilyStore = defineStore('family', () => {
           isAttending: g.isAttending,
           isChildMenu: g.isChildMenu,
           isAdultMenu: g.isAdultMenu,
+          isGlutenFree: g.isGlutenFree,
           isHalfPortion: g.isHalfPortion,
           intolerances: g.intolerances,
           selectedIntolerances: g.selectedIntolerances,

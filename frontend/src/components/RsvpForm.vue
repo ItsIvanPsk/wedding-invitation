@@ -21,16 +21,34 @@
                 
                 <!-- Menu Options Grid -->
                 <div class="menu-options-grid">
+                    <!-- Menu Module (Minimalist handmade style) -->
+                    <div class="menu-minimalist">
+                        <h3 class="menu-type-title">{{ getActiveMenu(guest).name }}</h3>
+                        <div class="menu-items-minimalist">
+                            <template v-if="!guest.isHalfPortion">
+                                <p class="dish-minimalist">{{ getActiveMenu(guest).starter }}</p>
+                                <span class="delimiter">~</span>
+                            </template>
+                            <p class="dish-minimalist">{{ getActiveMenu(guest).main }}</p>
+                            <span class="delimiter">~</span>
+                            <p class="dish-minimalist">{{ getActiveMenu(guest).dessert }}</p>
+                        </div>
+                    </div>
+
                     <!-- Menu Type -->
                     <div class="option-group">
                         <label class="option-label">Tipo de Menú</label>
-                        <div class="segment-control">
-                            <label :class="{ active: guest.isAdultMenu }">
-                                <input type="radio" :value="true" v-model="guest.isAdultMenu" :name="'menuType-' + guest.id" @change="setMenuType(guest, false)">
+                        <div class="segment-control three-options">
+                            <label :class="{ active: guest.isAdultMenu && !guest.isGlutenFree }">
+                                <input type="radio" :value="'adult'" :checked="guest.isAdultMenu && !guest.isGlutenFree" @change="setMenuType(guest, 'adult')">
                                 <span>Adulto</span>
                             </label>
+                            <label :class="{ active: guest.isAdultMenu && guest.isGlutenFree }">
+                                <input type="radio" :value="'glutenFree'" :checked="guest.isAdultMenu && guest.isGlutenFree" @change="setMenuType(guest, 'glutenFree')">
+                                <span>Sin Gluten</span>
+                            </label>
                             <label :class="{ active: guest.isChildMenu }">
-                                <input type="radio" :value="true" v-model="guest.isChildMenu" :name="'menuType-' + guest.id" @change="setMenuType(guest, true)">
+                                <input type="radio" :value="'child'" :checked="guest.isChildMenu" @change="setMenuType(guest, 'child')">
                                 <span>Infantil</span>
                             </label>
                         </div>
@@ -186,9 +204,40 @@ const isSelected = (guest: Guest, optionId: number) => {
     return guest.selectedIntolerances?.includes(optionId)
 }
 
-const setMenuType = (guest: Guest, isChild: boolean) => {
-    guest.isChildMenu = isChild
-    guest.isAdultMenu = !isChild
+const menuData = {
+  adult: {
+    name: 'Menú Adulto',
+    icon: '🍽️',
+    starter: 'Crema de cigalas con crujiente de parmesano',
+    main: 'Meloso de ternera a baja temperatura con parmentier de trufa',
+    dessert: 'Texturas de chocolate belga con frutos rojos'
+  },
+  glutenFree: {
+    name: 'Menú Sin Gluten',
+    icon: '🌾🚫',
+    starter: 'Ensalada de carpaccio de buey con virutas de foie (SG)',
+    main: 'Rodaballo al horno con patatas panadera (SG)',
+    dessert: 'Mousse de mango y coco con perlas de tapioca (SG)'
+  },
+  child: {
+    name: 'Menú Infantil',
+    icon: '🐥',
+    starter: 'Macarrones a la boloñesa caseros',
+    main: 'Escalope de pollo con patatas fritas',
+    dessert: 'Copa de helado tres gustos'
+  }
+}
+
+const getActiveMenu = (guest: Guest) => {
+    if (guest.isChildMenu) return menuData.child
+    if (guest.isGlutenFree) return menuData.glutenFree
+    return menuData.adult
+}
+
+const setMenuType = (guest: Guest, type: 'adult' | 'glutenFree' | 'child') => {
+    guest.isChildMenu = type === 'child'
+    guest.isAdultMenu = type === 'adult' || type === 'glutenFree'
+    guest.isGlutenFree = type === 'glutenFree'
 }
 </script>
 
@@ -291,12 +340,51 @@ input:checked ~ .label-text {
     animation: slideDown 0.4s ease-out;
 }
 
-/* Menu Grid */
+/* Menu Grid (Minimalist) */
 .menu-options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     margin-bottom: 2rem;
+}
+
+.menu-minimalist {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 1rem;
+    background: transparent;
+}
+
+.menu-type-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.menu-items-minimalist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.dish-minimalist {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.05rem;
+    color: #555;
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+.delimiter {
+    color: #ccc;
+    font-size: 1.2rem;
+    margin: 0.2rem 0;
 }
 
 @media (max-width: 600px) {

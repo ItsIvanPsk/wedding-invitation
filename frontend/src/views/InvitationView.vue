@@ -10,8 +10,7 @@
     <p>{{ familyStore.error }}</p>
   </div>
 
-  <div v-else-if="familyStore.family" class="invitation-container">
-    
+  <div class="invitation-container">
     <!-- 1. Nos Casamos (Hero) -->
     <section class="hero section">
       <div class="container text-center">
@@ -89,25 +88,25 @@
       </div>
     </section>
 
-    <!-- 5. RSVP -->
-    <section class="section rsvp-section" v-scroll-reveal>
+    <!-- 5. RSVP (Conditional only if family loaded) -->
+    <section v-if="familyStore.family" class="section rsvp-section" v-scroll-reveal>
       <div class="container">
         <h2 class="section-title text-center">Confirmación de Asistencia</h2>
         <p class="text-center mb-2">Por favor, confirma antes del <strong>1 de Noviembre de 2026</strong></p>
         <RsvpForm :token="route.params.token as string" />
       </div>
     </section>
-
-    <footer class="site-footer">
-      <div class="footer-content">
-        <h3>¿Tienes dudas?</h3>
-        <p>Si tienes alguna pregunta, no dudes en contactarnos.</p>
-        <a href="https://wa.me/34665528630" target="_blank" class="contact-btn"
-          >Contactar por WhatsApp</a
-        >
-      </div>
-    </footer>
   </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <h3>¿Tienes dudas?</h3>
+      <p>Si tienes alguna pregunta, no dudes en contactarnos.</p>
+      <a href="https://wa.me/34665528630" target="_blank" class="contact-btn">
+        Contactar por WhatsApp
+      </a>
+    </div>
+  </footer>
 </template>
 
 <script setup lang="ts">
@@ -139,6 +138,7 @@ audio.addEventListener('canplay', () => console.log("🎧 Audio: Listo para repr
 audio.addEventListener('error', (e) => console.error("🎧 Audio: Error de carga", e))
 
 const handleEnvelopeOpened = () => {
+  console.log("📨 InvitationView: handleEnvelopeOpened called")
   showEnvelope.value = false
   document.body.classList.remove('no-scroll')
 }
@@ -171,8 +171,11 @@ onMounted(() => {
   document.body.classList.add('no-scroll')
   playMusic()
   const token = route.params.token as string
+  console.log("🎟️ InvitationView: Token detectado:", token)
   if (token) {
     familyStore.fetchFamily(token)
+  } else {
+    console.warn("🎟️ InvitationView: No se encontró token en la URL")
   }
 })
 </script>

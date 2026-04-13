@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "IOrY2UFlMcY=",
+  "dgSpecHash": "FUpUYyFCo9I=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\WeddingInvitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ivanf\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.14\\microsoft.netcore.app.ref.9.0.14.nupkg.sha512",
+    "C:\\Users\\ivanf\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.14\\microsoft.windowsdesktop.app.ref.9.0.14.nupkg.sha512",
+    "C:\\Users\\ivanf\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.14\\microsoft.aspnetcore.app.ref.9.0.14.nupkg.sha512"
+  ],
   "logs": []
 }

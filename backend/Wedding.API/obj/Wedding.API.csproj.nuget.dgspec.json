@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.API\\Wedding.API.csproj": {}
+    "D:\\WeddingInvitation\\backend\\Wedding.API\\Wedding.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.API\\Wedding.API.csproj": {
+    "D:\\WeddingInvitation\\backend\\Wedding.API\\Wedding.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.API\\Wedding.API.csproj",
+        "projectUniqueName": "D:\\WeddingInvitation\\backend\\Wedding.API\\Wedding.API.csproj",
         "projectName": "Wedding.API",
-        "projectPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.API\\Wedding.API.csproj",
+        "projectPath": "D:\\WeddingInvitation\\backend\\Wedding.API\\Wedding.API.csproj",
         "packagesPath": "C:\\Users\\ivanf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.API\\obj\\",
+        "outputPath": "D:\\WeddingInvitation\\backend\\Wedding.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,14 +33,14 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Application\\Wedding.Application.csproj": {
-                "projectPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Application\\Wedding.Application.csproj"
+              "D:\\WeddingInvitation\\backend\\Wedding.Application\\Wedding.Application.csproj": {
+                "projectPath": "D:\\WeddingInvitation\\backend\\Wedding.Application\\Wedding.Application.csproj"
               },
-              "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Infrastructure.Data\\Wedding.Infrastructure.Data.csproj": {
-                "projectPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Infrastructure.Data\\Wedding.Infrastructure.Data.csproj"
+              "D:\\WeddingInvitation\\backend\\Wedding.Infrastructure.Data\\Wedding.Infrastructure.Data.csproj": {
+                "projectPath": "D:\\WeddingInvitation\\backend\\Wedding.Infrastructure.Data\\Wedding.Infrastructure.Data.csproj"
               },
-              "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Infrastructure.Repositories\\Wedding.Infrastructure.Repositories.csproj": {
-                "projectPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Infrastructure.Repositories\\Wedding.Infrastructure.Repositories.csproj"
+              "D:\\WeddingInvitation\\backend\\Wedding.Infrastructure.Repositories\\Wedding.Infrastructure.Repositories.csproj": {
+                "projectPath": "D:\\WeddingInvitation\\backend\\Wedding.Infrastructure.Repositories\\Wedding.Infrastructure.Repositories.csproj"
               }
             }
           }
@@ -55,7 +55,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -95,6 +95,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[9.0.14, 9.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -103,18 +121,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Application\\Wedding.Application.csproj": {
+    "D:\\WeddingInvitation\\backend\\Wedding.Application\\Wedding.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Application\\Wedding.Application.csproj",
+        "projectUniqueName": "D:\\WeddingInvitation\\backend\\Wedding.Application\\Wedding.Application.csproj",
         "projectName": "Wedding.Application",
-        "projectPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Application\\Wedding.Application.csproj",
+        "projectPath": "D:\\WeddingInvitation\\backend\\Wedding.Application\\Wedding.Application.csproj",
         "packagesPath": "C:\\Users\\ivanf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Application\\obj\\",
+        "outputPath": "D:\\WeddingInvitation\\backend\\Wedding.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -136,8 +154,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj": {
-                "projectPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj"
+              "D:\\WeddingInvitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj": {
+                "projectPath": "D:\\WeddingInvitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj"
               }
             }
           }
@@ -152,7 +170,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -182,23 +200,37 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj": {
+    "D:\\WeddingInvitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj",
+        "projectUniqueName": "D:\\WeddingInvitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj",
         "projectName": "Wedding.Domain",
-        "projectPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj",
+        "projectPath": "D:\\WeddingInvitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj",
         "packagesPath": "C:\\Users\\ivanf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Domain\\obj\\",
+        "outputPath": "D:\\WeddingInvitation\\backend\\Wedding.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -232,7 +264,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -248,23 +280,37 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Infrastructure.Data\\Wedding.Infrastructure.Data.csproj": {
+    "D:\\WeddingInvitation\\backend\\Wedding.Infrastructure.Data\\Wedding.Infrastructure.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Infrastructure.Data\\Wedding.Infrastructure.Data.csproj",
+        "projectUniqueName": "D:\\WeddingInvitation\\backend\\Wedding.Infrastructure.Data\\Wedding.Infrastructure.Data.csproj",
         "projectName": "Wedding.Infrastructure.Data",
-        "projectPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Infrastructure.Data\\Wedding.Infrastructure.Data.csproj",
+        "projectPath": "D:\\WeddingInvitation\\backend\\Wedding.Infrastructure.Data\\Wedding.Infrastructure.Data.csproj",
         "packagesPath": "C:\\Users\\ivanf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Infrastructure.Data\\obj\\",
+        "outputPath": "D:\\WeddingInvitation\\backend\\Wedding.Infrastructure.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -286,8 +332,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj": {
-                "projectPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj"
+              "D:\\WeddingInvitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj": {
+                "projectPath": "D:\\WeddingInvitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj"
               }
             }
           }
@@ -302,7 +348,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -332,23 +378,37 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Infrastructure.Repositories\\Wedding.Infrastructure.Repositories.csproj": {
+    "D:\\WeddingInvitation\\backend\\Wedding.Infrastructure.Repositories\\Wedding.Infrastructure.Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Infrastructure.Repositories\\Wedding.Infrastructure.Repositories.csproj",
+        "projectUniqueName": "D:\\WeddingInvitation\\backend\\Wedding.Infrastructure.Repositories\\Wedding.Infrastructure.Repositories.csproj",
         "projectName": "Wedding.Infrastructure.Repositories",
-        "projectPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Infrastructure.Repositories\\Wedding.Infrastructure.Repositories.csproj",
+        "projectPath": "D:\\WeddingInvitation\\backend\\Wedding.Infrastructure.Repositories\\Wedding.Infrastructure.Repositories.csproj",
         "packagesPath": "C:\\Users\\ivanf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Infrastructure.Repositories\\obj\\",
+        "outputPath": "D:\\WeddingInvitation\\backend\\Wedding.Infrastructure.Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -370,11 +430,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj": {
-                "projectPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj"
+              "D:\\WeddingInvitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj": {
+                "projectPath": "D:\\WeddingInvitation\\backend\\Wedding.Domain\\Wedding.Domain.csproj"
               },
-              "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Infrastructure.Data\\Wedding.Infrastructure.Data.csproj": {
-                "projectPath": "C:\\Users\\ivanf\\.gemini\\antigravity\\scratch\\wedding-invitation\\backend\\Wedding.Infrastructure.Data\\Wedding.Infrastructure.Data.csproj"
+              "D:\\WeddingInvitation\\backend\\Wedding.Infrastructure.Data\\Wedding.Infrastructure.Data.csproj": {
+                "projectPath": "D:\\WeddingInvitation\\backend\\Wedding.Infrastructure.Data\\Wedding.Infrastructure.Data.csproj"
               }
             }
           }
@@ -389,7 +449,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -411,12 +471,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
