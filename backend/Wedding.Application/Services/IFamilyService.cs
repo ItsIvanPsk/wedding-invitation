@@ -9,5 +9,6 @@ namespace Wedding.Application.Services
         Task<List<FamilyDto>> GetAllFamiliesAsync();
         Task<bool> ConfirmAttendanceAsync(string token, ConfirmationRequest request);
         Task<FamilyDto> CreateFamilyAsync(string name, List<string> guestNames);
+        Task<bool> UpdateGuestAsync(int guestId, GuestDto guestDto);
     }
 }

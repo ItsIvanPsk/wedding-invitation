@@ -83,6 +83,6 @@ onUnmounted(() => clearInterval(timer))
 
 .separator {
   font-size: 2rem;
-  color: var(--color-accent);
+  color: white;
 }
 </style>

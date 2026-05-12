@@ -28,6 +28,7 @@ namespace Wedding.Application.DTOs
 
     public class ConfirmationRequest
     {
+        public string? Email { get; set; }
         public List<GuestConfirmationDto> Guests { get; set; } = new();
     }
 

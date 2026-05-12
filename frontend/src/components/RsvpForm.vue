@@ -1,7 +1,7 @@
 <template>
   <div class="rsvp-container">
-    <div v-if="familyStore.family" class="family-name">
-      <p>Hola, {{ familyStore.family.name }}. <span>Hemos reservado  <span style="padding: 0.5rem; margin: 0; border-radius: 5px; border: 1px solid gold; color: black" >{{ familyStore.family.guests.length }}</span> lugares.</span></p>
+    <div v-if="familyStore.family" class="family-name text-center">
+      <p>Hola, {{ familyStore.family.name }}. <span>Hemos reservado  <span style="padding: 0.5rem; margin: 0; border-radius: 5px; border: 1px solid var(--color-accent); color: var(--color-accent)" >{{ familyStore.family.guests.length }}</span> lugares.</span></p>
     </div>
     <Form @submit="onSubmit" :validation-schema="schema" style="margin-top: 2rem;">
       <div v-for="guest in familyStore.family?.guests" :key="guest.id" class="guest-card-wrapper" v-scroll-reveal>
@@ -36,22 +36,22 @@
                     </div>
 
                     <!-- Menu Type -->
-                    <div class="option-group">
+                    <div class="option-group" v-if="!isCeliacOnlyGuest(guest.name)">
                         <label class="option-label">Tipo de Menú</label>
-                        <div class="segment-control three-options">
+                        <div class="segment-control">
                             <label :class="{ active: guest.isAdultMenu && !guest.isGlutenFree }">
                                 <input type="radio" :value="'adult'" :checked="guest.isAdultMenu && !guest.isGlutenFree" @change="setMenuType(guest, 'adult')">
                                 <span>Adulto</span>
                             </label>
-                            <label :class="{ active: guest.isAdultMenu && guest.isGlutenFree }">
-                                <input type="radio" :value="'glutenFree'" :checked="guest.isAdultMenu && guest.isGlutenFree" @change="setMenuType(guest, 'glutenFree')">
-                                <span>Sin Gluten</span>
-                            </label>
                             <label :class="{ active: guest.isChildMenu }">
                                 <input type="radio" :value="'child'" :checked="guest.isChildMenu" @change="setMenuType(guest, 'child')">
-                                <span>Infantil</span>
+                                <span>Infantil (máx. 12 años)</span>
                             </label>
                         </div>
+                    </div>
+                    <div class="option-group" v-else>
+                        <label class="option-label">Tipo de Menú</label>
+                        <div class="celiac-only-badge">Sin Gluten (Celíaco)</div>
                     </div>
 
                     <!-- Portion Size -->
@@ -89,7 +89,7 @@
                                     class="dropdown-item"
                                     @click="toggleIntolerance(guest, opt)"
                                 >
-                                <div class="checkbox-circle" :class="{ checked: isSelected(guest, opt.id) }"></div>
+                                <div class="checkbox-round" :class="{ checked: isSelected(guest, opt.id) }"></div>
                                 <span>{{ opt.name }}</span>
                             </div>
                         </div>
@@ -114,6 +114,21 @@
         </div>
       </div>
 
+      <!-- Email for Confirmation -->
+      <div class="email-confirmation-card" v-scroll-reveal>
+        <div class="form-group">
+            <label class="option-label">Email para la confirmación</label>
+            <p class="email-hint">Te enviaremos un resumen de tu asistencia a esta dirección.</p>
+            <input 
+                type="email" 
+                v-model="familyStore.family.email" 
+                class="form-input" 
+                placeholder="ejemplo@correo.com"
+                required
+            >
+        </div>
+      </div>
+
       <div class="form-actions">
          <button type="submit" class="btn-submit" :disabled="familyStore.loading">
            {{ familyStore.loading ? 'Enviando...' : 'Confirmar Asistencia' }}
@@ -125,7 +140,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 import { useFamilyStore, type Guest } from '../stores/family'
 import { Form, Field, ErrorMessage } from 'vee-validate'
@@ -133,6 +148,24 @@ import * as yup from 'yup'
 
 const familyStore = useFamilyStore()
 const props = defineProps<{ token: string }>()
+
+const isCeliacOnlyGuest = (name: string) => {
+    if (!name) return false
+    const normalized = name.toLowerCase().trim()
+    return normalized === 'javi' || normalized === 'nil'
+}
+
+watchEffect(() => {
+    if (familyStore.family?.guests) {
+        familyStore.family.guests.forEach(guest => {
+            if (isCeliacOnlyGuest(guest.name)) {
+                guest.isGlutenFree = true
+                guest.isAdultMenu = true
+                guest.isChildMenu = false
+            }
+        })
+    }
+})
 
 interface Intolerance {
   id: number
@@ -220,7 +253,7 @@ const menuData = {
     dessert: 'Mousse de mango y coco con perlas de tapioca (SG)'
   },
   child: {
-    name: 'Menú Infantil',
+    name: 'Menú Infantil (Máx. 12 años)',
     icon: '🐥',
     starter: 'Macarrones a la boloñesa caseros',
     main: 'Escalope de pollo con patatas fritas',
@@ -256,7 +289,7 @@ const setMenuType = (guest: Guest, type: 'adult' | 'glutenFree' | 'child') => {
 
 .guest-card.attending {
     border-color: var(--color-accent);
-    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+    box-shadow: 0 10px 30px rgba(128, 0, 32, 0.1);
 }
 
 .card-header {
@@ -359,9 +392,9 @@ input:checked ~ .label-text {
 
 .menu-type-title {
     font-family: 'Great Vibes', cursive;
-    font-size: 2.5rem;
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
     color: var(--color-accent);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     font-weight: 400;
 }
 
@@ -375,10 +408,41 @@ input:checked ~ .label-text {
 .dish-minimalist {
     font-family: var(--font-body);
     font-weight: 300;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     color: #555;
-    max-width: 400px;
-    line-height: 1.6;
+    max-width: 100%;
+    line-height: 1.5;
+    padding: 0 0.5rem;
+}
+
+@media (max-width: 640px) {
+    .card-body {
+        padding: 1.5rem 1rem;
+    }
+    
+    .segment-control {
+        flex-direction: column;
+        background: transparent;
+        gap: 0.5rem;
+        padding: 0;
+    }
+    
+    .segment-control label {
+        background: #f5f5f5;
+        border-radius: 8px;
+        padding: 12px;
+    }
+    
+    .segment-control label.active {
+        background: var(--color-accent);
+        color: white;
+    }
+    
+    .message-from-couple {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 }
 
 .delimiter {
@@ -493,18 +557,31 @@ input:checked ~ .label-text {
     background: #f9f9f9;
 }
 
-.checkbox-circle {
+.checkbox-round {
     width: 18px;
     height: 18px;
     border: 2px solid #ddd;
-    border-radius: 50%;
+    border-radius: 4px;
     margin-right: 12px;
     transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.checkbox-circle.checked {
+.checkbox-round.checked {
     border-color: var(--color-accent);
     background: var(--color-accent);
+}
+
+.checkbox-round.checked::after {
+    content: '';
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    margin-bottom: 2px;
 }
 
 .form-input {
@@ -568,12 +645,40 @@ input:checked ~ .label-text {
     background-color: var(--color-accent);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+    box-shadow: 0 5px 15px rgba(128, 0, 32, 0.4);
+}
+
+.email-confirmation-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    margin-bottom: 2.5rem;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.email-hint {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1rem;
+    margin-top: -0.5rem;
 }
 
 .rsvp-container {
     max-width: 800px; /* Wider container */
     margin: 0 auto;
+}
+
+.celiac-only-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--color-accent);
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    align-self: flex-start;
 }
 
 </style>

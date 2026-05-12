@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import logoEstampado from '@/assets/LogoEstampado.png'
 
 const emit = defineEmits(['opened'])
 
@@ -52,27 +53,21 @@ const openEnvelope = () => {
         @click="openEnvelope"
         aria-label="Abrir el sobre pulsando el sello"
       >
-        <div class="seal-inner">
-          <span class="initials">N & I</span>
+        <div>
+          <img :src="logoEstampado" alt="Logo Estampado" class="seal-logo" />
         </div>
       </button>
     </div>
 
     <!-- Hint -->
-    <p class="hint" v-if="!isOpen">Pulsa el sello para abrir</p>
+    <div class="envelope-hints" v-if="!isOpen">
+      <p class="hint">Pulsa el sello para abrir</p>
+      <p class="audio-hint">🔊 Se recomienda subir el volumen de tu dispositivo</p>
+    </div>
   </div>
 </template>
 
 <style scoped>
-/* ── Variables ──────────────────────────────────────── */
-:root {
-  --burg-base:    #6b1a2a;
-  --burg-dark:    #4e1220;
-  --burg-mid:     #7d2033;
-  --burg-light:   #9b2a41;
-  --burg-top:     #8c2239;
-}
-
 /* ── Scene (full screen = the envelope body back) ───── */
 .scene {
   position: fixed;
@@ -98,61 +93,64 @@ const openEnvelope = () => {
 .white-fade.active { opacity: 1; }
 
 /* ── Shared flap base ────────────────────────────────  */
-/*  Every flap is a full-cover div clipped to a triangle */
 .flap {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-/* LEFT  — triangle: top-left → bottom-left → center */
+/* LEFT */
 .flap-left {
   clip-path: polygon(0% 0%, 0% 100%, 50% 50%);
-  background: linear-gradient(135deg, #7d2033 0%, #5e1826 100%);
+  background-color: #8a001c;
   z-index: 2;
-  /* subtle inner shadow toward center */
-  box-shadow: inset -8px 0 24px rgba(0,0,0,0.25);
+  width: 140%;
+  left: -20%;
+  box-shadow: inset -8px 0 24px rgba(0,0,0,0.4);
 }
 
-/* RIGHT — triangle: top-right → bottom-right → center */
+/* RIGHT */
 .flap-right {
   clip-path: polygon(100% 0%, 100% 100%, 50% 50%);
-  background: linear-gradient(225deg, #7d2033 0%, #5e1826 100%);
+  background-color: #8a001c;
   z-index: 2;
+  width: 140%;
+  left: -20%;
 }
 
-/* BOTTOM — triangle: bottom-left → bottom-right → center */
+/* BOTTOM */
 .flap-bottom {
   clip-path: polygon(0% 100%, 100% 100%, 50% 50%);
-  background: linear-gradient(0deg, #4e1220 0%, #6b1a2a 100%);
+  background-color: #6a0016;
   z-index: 3;
-  /* drop shadow upward to separate from back */
-  filter: drop-shadow(0 -4px 12px rgba(0,0,0,0.35));
+  width: 140%;
+  left: -20%;
+  filter: drop-shadow(0 -4px 12px rgba(0,0,0,0.5));
 }
 
 /* ── Top unit (flap + seal animate together) ─────────── */
 .top-unit {
   position: absolute;
   inset: 0;
-  transform-origin: 50% 0%;           /* hinge at top edge */
-  /* Faster start, medium-slow smooth finish */
+  width: 140%;
+  left: -20%;
+  transform-origin: 50% 0%;
   transition: transform 3.5s cubic-bezier(0.3, 0, 0.2, 1);
   z-index: 10;
 }
 
-/* When open: only lift slightly before fading to white */
 .top-unit.open {
   transform: rotateX(-25deg);
 }
 
-/* TOP — triangle: top-left → top-right → center */
+/* TOP */
 .flap-top {
   position: absolute;
   inset: 0;
   clip-path: polygon(0% 0%, 100% 0%, 50% 50%);
-  background: linear-gradient(180deg, #a0293f 0%, #7d2033 100%);
+  background-color: #a00020;
   z-index: 2;
-  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.4));
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.6));
 }
 
 /* Interior lining of top flap (black) */
@@ -206,16 +204,12 @@ const openEnvelope = () => {
   box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
 }
 
-.initials {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  color: rgba(255, 215, 200, 0.85);
-  text-shadow: 0px 2px 3px rgba(0,0,0,0.5), 0 0 1px rgba(255,255,255,0.2);
-  user-select: none;
-  font-style: italic;
-  font-weight: 700;
+.seal-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
   z-index: 2;
-  letter-spacing: -2px;
 }
 
 /* Hover pulse when not yet opened */
@@ -234,6 +228,8 @@ const openEnvelope = () => {
   content: '';
   position: absolute;
   inset: 0;
+  width: 140%;
+  left: -20%;
   /* The diagonal fold lines: X pattern from corners to center */
   background:
     linear-gradient(to bottom right, transparent calc(50% - 1px), rgba(255,180,160,0.18) calc(50% - 1px), rgba(255,180,160,0.18) calc(50% + 1px), transparent calc(50% + 1px)),
@@ -243,24 +239,41 @@ const openEnvelope = () => {
 }
 
 /* ── Hint text ────────────────────────────────────────── */
-.hint {
+.envelope-hints {
   position: absolute;
-  bottom: 7%;
+  bottom: 6%;
   left: 50%;
   transform: translateX(-50%);
-  color: rgba(255, 215, 200, 0.8);
-  font-family: 'Cormorant Garamond', 'Georgia', serif;
-  font-size: clamp(0.85rem, 3.5vw, 1.2rem);
-  letter-spacing: 2px;
-  text-align: center;
-  white-space: nowrap;
-  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
   z-index: 15;
+  pointer-events: none;
+  text-align: center;
+  width: 90%;
+}
+
+.hint {
+  color: rgba(255, 215, 200, 0.95);
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: clamp(0.9rem, 4vw, 1.3rem);
+  letter-spacing: 2px;
+  white-space: nowrap;
   animation: breathe 2.5s ease-in-out infinite;
 }
 
+.audio-hint {
+  color: rgba(255, 255, 255, 0.75);
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.7rem, 3vw, 0.85rem);
+  letter-spacing: 1px;
+  animation: breathe 2.5s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
 @keyframes breathe {
-  0%, 100% { opacity: 0.8; }
-  50%       { opacity: 0.3; }
+  0%, 100% { opacity: 0.85; }
+  50%       { opacity: 0.35; }
 }
 </style>

@@ -57,7 +57,7 @@ namespace Wedding.Domain.Tests
             var guest = new Guest("Nerea");
 
             // Act
-            guest.UpdateConfirmation(true, "Gluten", "No observations", "Muy majos");
+            guest.UpdateConfirmation(true, false, false, "Gluten", "No observations", "Muy majos", new List<int>());
 
             // Assert
             guest.IsAttending.Should().BeTrue();

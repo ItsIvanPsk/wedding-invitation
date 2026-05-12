@@ -13,17 +13,19 @@ namespace Wedding.Application.Tests
     public class FamilyServiceTests
     {
         private readonly Mock<IFamilyRepository> _mockRepo;
+        private readonly Mock<IEmailService> _mockEmail;
         private readonly FamilyService _service;
         private readonly IMapper _mapper;
 
         public FamilyServiceTests()
         {
             _mockRepo = new Mock<IFamilyRepository>();
+            _mockEmail = new Mock<IEmailService>();
             
             var config = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
             _mapper = config.CreateMapper();
 
-            _service = new FamilyService(_mockRepo.Object, _mapper);
+            _service = new FamilyService(_mockRepo.Object, _mapper, _mockEmail.Object);
         }
 
         [Fact]
