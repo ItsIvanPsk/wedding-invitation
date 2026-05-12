@@ -29,12 +29,13 @@ builder.Services.AddSwaggerGen();
 // Configure Database
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<WeddingDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString),
+    options.UseNpgsql(connectionString,
         b => b.MigrationsAssembly("Wedding.Infrastructure.Data"))); // Migrations in Data project
 
 // Register Services & Repositories
 builder.Services.AddScoped<IFamilyRepository, FamilyRepository>();
 builder.Services.AddScoped<IIntoleranceRepository, IntoleranceRepository>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IFamilyService, FamilyService>();
 
 // CORS
@@ -59,6 +60,36 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("AllowAll");
+
+// Simple Admin Auth Middleware
+app.Use(async (context, next) =>
+{
+    var path = context.Request.Path.Value ?? "";
+    var method = context.Request.Method;
+
+    // Admin endpoints: GET /api/families (list) and POST /api/families (create)
+    bool isAdminEndpoint = path.Equals("/api/families", StringComparison.OrdinalIgnoreCase) && 
+                          (method.Equals("GET", StringComparison.OrdinalIgnoreCase) || 
+                           method.Equals("POST", StringComparison.OrdinalIgnoreCase));
+
+    if (isAdminEndpoint)
+    {
+        var adminUser = builder.Configuration["ADMIN_USER"] ?? "ItsIvanPsk";
+        var adminPassword = builder.Configuration["ADMIN_PASSWORD"] ?? "LittleRabbit05!";
+        
+        context.Request.Headers.TryGetValue("X-Admin-User", out var providedUser);
+        context.Request.Headers.TryGetValue("X-Admin-Password", out var providedPassword);
+
+        if (providedUser != adminUser || providedPassword != adminPassword)
+        {
+            context.Response.StatusCode = 401;
+            await context.Response.WriteAsync("Unauthorized: Invalid Admin Credentials");
+            return;
+        }
+    }
+
+    await next();
+});
 
 app.UseAuthorization();
 

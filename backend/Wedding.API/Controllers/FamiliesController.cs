@@ -38,6 +38,14 @@ namespace Wedding.API.Controllers
             return Ok("Attendance confirmed.");
         }
 
+        [HttpPatch("guests/{guestId}")]
+        public async Task<IActionResult> UpdateGuest(int guestId, [FromBody] GuestDto guestDto)
+        {
+            var result = await _service.UpdateGuestAsync(guestId, guestDto);
+            if (!result) return NotFound("Guest not found.");
+            return Ok("Guest updated.");
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateFamilyRequest request)
         {

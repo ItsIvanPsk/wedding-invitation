@@ -19,6 +19,7 @@ export interface Family {
   id: string
   name: string
   token: string
+  email?: string | null
   confirmationDate: string | null
   guests: Guest[]
 }
@@ -50,6 +51,7 @@ export const useFamilyStore = defineStore('family', () => {
     loading.value = true
     try {
       const payload = {
+        email: family.value.email,
         guests: family.value.guests.map(g => ({
           guestId: Number(g.id),
           isAttending: g.isAttending,

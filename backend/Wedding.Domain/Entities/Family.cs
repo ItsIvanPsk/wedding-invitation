@@ -8,6 +8,7 @@ namespace Wedding.Domain.Entities
         public int Id { get; private set; }
         public string Token { get; private set; }
         public string Name { get; private set; }
+        public string? Email { get; private set; }
         public DateTime? ConfirmationDate { get; private set; } // Represents the confirmation timestamp
 
         private readonly List<Guest> _guests = new();

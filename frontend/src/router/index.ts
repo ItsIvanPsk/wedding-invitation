@@ -17,16 +17,29 @@ const router = createRouter({
     {
       path: '/admin',
       name: 'admin',
-      component: () => import('../views/AdminView.vue')
+      component: () => import('../views/AdminView.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginView.vue')
     },
     {
       path: '/',
       name: 'home',
-      // For now, redirect to a demo token or show a landing. 
-      // Redirecting to a generic landing is safer.
-      component: () => import('../views/InvitationView.vue') // Placeholder
+      component: () => import('../views/InvitationView.vue')
     }
   ]
+})
+
+// Navigation Guard
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && !sessionStorage.getItem('admin_password')) {
+    next('/login')
+  } else {
+    next()
+  }
 })
 
 export default router

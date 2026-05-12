@@ -31,7 +31,7 @@
     <div class="timeline-item">
       <div class="time">23:30</div>
       <div class="content">
-        <h3>Fin de la Banquete</h3>
+        <h3>Fin del Banquete</h3>
         <p>Inicio discoteca privada</p>
       </div>
     </div>

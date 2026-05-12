@@ -4,13 +4,13 @@
 :root {
   /* Colors - Minimalist Palette */
   --color-primary: #ffffff;
-  --color-text-main: #2c3e50;
-  --color-text-light: #606f7b;
-  --color-accent: #c5a059;
-  /* Muted Gold */
-  --color-accent-dark: #a08040;
-  --color-bg-light: #fdfbf7;
-  /* Warm white */
+  --color-text-main: #000000;
+  --color-text-light: #1a1a1a;
+  --color-accent: #800020;
+  /* Deep Burgundy */
+  --color-accent-dark: #600010;
+  --color-bg-light: #fdfaf7;
+  /* Creamy white */
   --color-success: #27ae60;
   --color-error: #c0392b;
 
@@ -26,7 +26,7 @@
   --spacing-xl: 6rem;
 
   /* Shadows */
-  --shadow-soft: 0 10px 30px -10px rgba(197, 160, 89, 0.15);
+  --shadow-soft: 0 10px 30px -10px rgba(128, 0, 32, 0.1);
   --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
 }
 
@@ -44,7 +44,10 @@
 body {
   font-family: var(--font-body);
   color: var(--color-text-main);
-  background-color: var(--color-bg-light);
+  background-image: url('@/assets/marble-bg.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
   line-height: 1.7;
 }
 
@@ -81,21 +84,31 @@ button {
 
 /* Utility Classes */
 .container {
+  width: 100%;
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 var(--spacing-sm);
+}
+
+.text-center {
+  text-align: center;
 }
 
 .text-accent {
   color: var(--color-accent);
 }
 
+/* Responsive Headings */
+h1 { font-size: clamp(2rem, 8vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 6vw, 2.5rem); }
+h3 { font-size: clamp(1.25rem, 5vw, 1.75rem); }
+
 /* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 2.5rem;
+  padding: 0.8rem 1.5rem;
   border-radius: 50px;
   font-weight: 600;
   font-size: 0.9rem;
@@ -103,6 +116,16 @@ button {
   text-transform: uppercase;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  width: auto;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.8rem;
+    width: 100%; /* Full width buttons on mobile if needed */
+  }
 }
 
 .btn-primary {
@@ -129,15 +152,22 @@ button {
 .btn-sm {
   padding: 0.4rem 1rem;
   font-size: 0.75rem;
+  width: auto;
 }
 
 .section {
-  padding: var(--spacing-lg) 0;
+  padding: var(--spacing-md) 0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: var(--spacing-lg) 0;
+  }
 }
 
 .section-title {
   text-align: center;
-  font-size: 2.75rem;
+  font-size: clamp(2rem, 10vw, 3.5rem);
   margin-bottom: var(--spacing-md);
   color: var(--color-text-main);
 }
@@ -156,10 +186,11 @@ button {
 .input {
   padding: 0.8rem 1rem;
   border: 1px solid #e0e0e0;
-  border-radius: 4px;
+  border-radius: 8px;
   font-family: inherit;
   font-size: 1rem;
   transition: border-color 0.3s;
+  width: 100%;
 }
 
 .input:focus {
@@ -169,7 +200,30 @@ button {
 
 .card {
   background: white;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 12px;
   box-shadow: var(--shadow-card);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 2.5rem;
+  }
+}
+
+/* Mobile Utilities */
+.hidden-mobile {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .hidden-mobile {
+    display: inherit !important;
+  }
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }

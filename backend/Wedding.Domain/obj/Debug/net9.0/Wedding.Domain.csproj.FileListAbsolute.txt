@@ -9,3 +9,15 @@ C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Do
 C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Domain\obj\Debug\net9.0\refint\Wedding.Domain.dll
 C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Domain\obj\Debug\net9.0\Wedding.Domain.pdb
 C:\Users\ivanf\.gemini\antigravity\scratch\wedding-invitation\backend\Wedding.Domain\obj\Debug\net9.0\ref\Wedding.Domain.dll
+D:\WeddingInvitation\backend\Wedding.Domain\bin\Debug\net9.0\Wedding.Domain.deps.json
+D:\WeddingInvitation\backend\Wedding.Domain\bin\Debug\net9.0\Wedding.Domain.dll
+D:\WeddingInvitation\backend\Wedding.Domain\bin\Debug\net9.0\Wedding.Domain.pdb
+D:\WeddingInvitation\backend\Wedding.Domain\obj\Debug\net9.0\Wedding.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\WeddingInvitation\backend\Wedding.Domain\obj\Debug\net9.0\Wedding.Domain.AssemblyInfoInputs.cache
+D:\WeddingInvitation\backend\Wedding.Domain\obj\Debug\net9.0\Wedding.Domain.AssemblyInfo.cs
+D:\WeddingInvitation\backend\Wedding.Domain\obj\Debug\net9.0\Wedding.Domain.csproj.CoreCompileInputs.cache
+D:\WeddingInvitation\backend\Wedding.Domain\obj\Debug\net9.0\Wedding.Domain.sourcelink.json
+D:\WeddingInvitation\backend\Wedding.Domain\obj\Debug\net9.0\Wedding.Domain.dll
+D:\WeddingInvitation\backend\Wedding.Domain\obj\Debug\net9.0\refint\Wedding.Domain.dll
+D:\WeddingInvitation\backend\Wedding.Domain\obj\Debug\net9.0\Wedding.Domain.pdb
+D:\WeddingInvitation\backend\Wedding.Domain\obj\Debug\net9.0\ref\Wedding.Domain.dll
